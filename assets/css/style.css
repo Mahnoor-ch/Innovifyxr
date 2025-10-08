@@ -70,17 +70,39 @@ header nav ul li .dropdown-menu li a:hover {  background: #0B61D6;  color: #fff;
   cursor: pointer;
   z-index: 1301;
 }
-
 /* =============================
    MOBILE DROPDOWN (animated)
 ============================= */
-.mobile-nav .dropdown > a { cursor: pointer;}
-.mobile-nav .dropdown-toggle { font-size: 14px; margin-left: 8px; transition: transform 0.3s ease;}
-.mobile-nav .dropdown-menu { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, opacity 0.35s ease; opacity: 0; padding-left: 15px;}
+.mobile-nav .dropdown > a {
+  cursor: pointer;
+}
+
+.mobile-nav .dropdown-toggle {
+  font-size: 14px;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav .dropdown-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.35s ease;
+  opacity: 0;
+  padding-left: 15px;
+  display: none; /* hidden by default */
+}
+
+/* When dropdown is open */
 .mobile-nav .dropdown.open > .dropdown-menu {
   max-height: 500px; /* enough space for submenu */
-  opacity: 1;}
-.mobile-nav .dropdown.open > a .dropdown-toggle { transform: rotate(180deg);}
+  opacity: 1;
+  display: block; /* visible when open */
+}
+
+.mobile-nav .dropdown.open > a .dropdown-toggle {
+  transform: rotate(180deg);
+}
+
 /* =============================
    RESPONSIVE RULES
 ============================= */
