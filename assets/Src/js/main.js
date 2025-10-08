@@ -17,19 +17,52 @@ document.addEventListener("DOMContentLoaded", () => {
   const dropdownLinks = mobileNav.querySelectorAll(".dropdown > a");
 
   dropdownLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault(); // ✅ Add this line — prevents instant navigation
+    let firstClick = false;
 
+    link.addEventListener("click", (e) => {
       const parent = link.parentElement;
 
-      // If it has submenu
-      if (parent.querySelector(".dropdown-menu")) {
-        parent.classList.toggle("open");
+      // If dropdown is not open yet
+      if (!parent.classList.contains("open")) {
+        e.preventDefault(); // stop page navigation on first click
+
+        // Close other open dropdowns
+        document.querySelectorAll(".mobile-nav .dropdown.open").forEach(openItem => {
+          if (openItem !== parent) openItem.classList.remove("open");
+        });
+
+        parent.classList.add("open"); // open this dropdown
+        firstClick = true;
+
+        // Reset firstClick after short time
+        setTimeout(() => (firstClick = false), 800);
+      } else {
+        // Second click → allow normal navigation
+        parent.classList.remove("open");
+        mobileNav.classList.remove("open"); // close menu after navigating
       }
     });
   });
-});
 
+  // Close dropdowns if clicking outside mobile nav
+  document.addEventListener("click", (e) => {
+    if (mobileNav.classList.contains("open")) {
+      const isClickInside = mobileNav.contains(e.target) || navToggle.contains(e.target);
+      if (!isClickInside) {
+        document.querySelectorAll(".mobile-nav .dropdown.open").forEach(openItem => {
+          openItem.classList.remove("open");
+        });
+      }
+    }
+  });
+
+  // Close mobile menu when any non-dropdown link is clicked
+  mobileNav.querySelectorAll("a:not(.dropdown > a)").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileNav.classList.remove("open");
+    });
+  });
+});
 
 
 // ==========================
