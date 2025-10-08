@@ -18,12 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   dropdownLinks.forEach(link => {
     link.addEventListener("click", (e) => {
+      e.preventDefault(); // ✅ Add this line — prevents instant navigation
+
       const parent = link.parentElement;
 
       // If it has submenu
       if (parent.querySelector(".dropdown-menu")) {
-        // Allow the link to navigate like desktop
-        // But also toggle submenu for touch users
         parent.classList.toggle("open");
       }
     });
