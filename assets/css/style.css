@@ -70,6 +70,7 @@ header nav ul li .dropdown-menu li a:hover {  background: #0B61D6;  color: #fff;
   cursor: pointer;
   z-index: 1301;
 }
+
 /* =============================
    MOBILE DROPDOWN (animated)
 ============================= */
@@ -2267,7 +2268,7 @@ body.webar-page .hero-content .btn-primary:hover {
   body.webar-page .hero-content .btn-primary {
     display: block;        /* stack vertically */
     width: 100%;           /* full width */
-    max-width: 280px;      /* prevent oversized button */
+    max-width: 180px;      /* prevent oversized button */
     margin: 10px auto;     /* vertical gap + centered */
     padding: 12px 0;
     font-size: 0.9rem;
@@ -2813,7 +2814,7 @@ body.vr-page .hero-content .btn-primary:hover {
   body.vr-page .hero-content .btn-primary {
     display: block;        /* stack vertically */
     width: 100%;           /* full width */
-    max-width: 280px;      /* prevent oversized button */
+    max-width: 180px;      /* prevent oversized button */
     margin: 10px auto;     /* vertical gap + centered */
     padding: 12px 0;
     font-size: 0.9rem;
@@ -3397,7 +3398,7 @@ body.game-page .hero-content .btn-primary:hover {
   body.game-page .hero-content .btn-primary {
     display: block;        /* stack vertically */
     width: 100%;           /* full width */
-    max-width: 280px;      /* prevent oversized button */
+    max-width: 180px;      /* prevent oversized button */
     margin: 10px auto;     /* vertical gap + centered */
     padding: 12px 0;
     font-size: 0.9rem;
@@ -3956,55 +3957,54 @@ body.team-page .team-card p.muted {
   }
 }
 
-/* HERO SECTION (AR Page) */
-body.ar-page .hero-slider-section {
+/* HERO SECTION - AR Page */
+body.ar-page .hero {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 60vh;
-  text-align: center;
-  color: #fff;
+  height: 60vh; /* full screen height */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  padding: 0 8%;
+  color: #fff;
+  text-align: center;
 }
 
-/* Dark Overlay for readability */
-body.ar-page .hero-slider-section::before {
+/* Dark overlay */
+body.ar-page .hero::before {
   content: "";
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 40, 85, 0.55); /* navy transparent overlay */
-  z-index: 0;
-}
-
-body.ar-page .hero-slider-content {
-  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
   z-index: 1;
-  max-width: 800px;
-  padding: 20px;
 }
 
-body.ar-page .hero-slider-content h1 {
+/* Content */
+body.ar-page .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+body.ar-page .hero-content h1 {
   font-size: 3rem;
-  font-weight: 700;
   margin-bottom: 20px;
-  color: #fff;
-  text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+  line-height: 1.2;
 }
 
-body.ar-page .hero-slider-content p {
+body.ar-page .hero-content p {
   font-size: 1.2rem;
   margin-bottom: 30px;
-  color: #e1e9f5;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 /* Primary Button */
-body.ar-page .hero-slider-content .btn-primary {
+body.ar-page .hero-content .btn-primary {
   background: #007bff;
   color: #fff;
   padding: 14px 32px;
@@ -4016,7 +4016,7 @@ body.ar-page .hero-slider-content .btn-primary {
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }
 
-body.ar-page .hero-slider-content .btn-primary:hover {
+body.ar-page .hero-content .btn-primary:hover {
   background: #0056b3;
   box-shadow: 0 6px 18px rgba(0, 123, 255, 0.5);
   transform: translateY(-2px);
@@ -4048,8 +4048,8 @@ body.ar-page .hero-slider-content .btn-primary:hover {
   body.ar-page .hero-content .btn-primary {
     display: block;        /* stack vertically */
     width: 100%;           /* full width */
-    max-width: 280px;      /* prevent oversized button */
-    margin: 10px auto;     /* vertical gap + centered */
+    max-width: 180px;      /* prevent oversized button */
+    margin: 0 auto;     /* vertical gap + centered */
     padding: 12px 0;
     font-size: 0.9rem;
   }
@@ -4751,7 +4751,7 @@ body.blockchain-page .hero-content .btn-primary:hover {
   body.blockchain-page .hero-content .btn-primary {
     display: block;        /* stack vertically */
     width: 100%;           /* full width */
-    max-width: 280px;      /* prevent oversized button */
+    max-width: 180px;      /* prevent oversized button */
     margin: 10px auto;     /* vertical gap + centered */
     padding: 12px 0;
     font-size: 0.9rem;
@@ -5206,150 +5206,115 @@ body.blockchain-page .tool-card:hover {
   }
 }
 
-/* HERO for App Page */
+/* HERO SECTION - AR Page */
 body.app-page .hero {
   position: relative;
-  width: 100%;
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
+  height: 60vh; /* full screen height */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  padding: 0 8%;
+  color: #fff;
+  text-align: center;
 }
 
-body.app-page .hero::after {
+/* Dark overlay */
+body.app-page .hero::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 28, 61, 0.55); /* blue overlay */
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
 }
 
+/* Content */
 body.app-page .hero-content {
   position: relative;
   z-index: 2;
   max-width: 700px;
-  padding: 20px;
 }
 
-/* Headings & Text */
 body.app-page .hero-content h1 {
   font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 body.app-page .hero-content p {
   font-size: 1.2rem;
-  margin-bottom: 25px;
-  color: #e0e0e0;
+  margin-bottom: 30px;
+  line-height: 1.5;
 }
 
-/* Buttons wrapper (use .cta-buttons since it's in HTML) */
-body.app-page .cta-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-/* Primary button */
-body.app-page .cta-buttons .btn-primary {
-  display: inline-block;
-  padding: 12px 28px;
-  font-size: 1rem;
-  font-weight: 600;
+/* Primary Button */
+body.app-page .hero-content .btn-primary {
   background: #007bff;
   color: #fff;
-  border: none;
-  border-radius: 6px;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }
 
-body.app-page .cta-buttons .btn-primary:hover {
+body.app-page .hero-content .btn-primary:hover {
   background: #0056b3;
+  box-shadow: 0 6px 18px rgba(0, 123, 255, 0.5);
+  transform: translateY(-2px);
 }
 
-/* Secondary button */
-body.app-page .cta-buttons .btn-secondary {
-  display: inline-block;
-  padding: 12px 28px;
-  font-size: 1rem;
-  font-weight: 600;
-  background: #fff;
-  color: #007bff;
-  border: 2px solid #007bff;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-body.app-page .cta-buttons .btn-secondary:hover {
-  background: #007bff;
-  color: #fff;
-}
-
-/* ==========================
-   Responsive
-========================== */
-
-/* Tablet */
-@media (max-width: 768px) {
-  body.app-page .hero {
-    height: 70vh;
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+  body.app-page .hero-content h1 {
+    font-size: 2.5rem;
   }
+  body.app-page .hero-content p {
+    font-size: 1.1rem;
+  }
+  body.app-page .hero-content .btn-primary {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    margin: 6px; /* spacing between buttons */
+  }
+}
 
+/* Responsive - Mobile */
+@media (max-width: 768px) {
   body.app-page .hero-content h1 {
     font-size: 2rem;
   }
-
   body.app-page .hero-content p {
     font-size: 1rem;
   }
-
-  body.app-page .cta-buttons .btn-primary,
-  body.app-page .cta-buttons .btn-secondary {
-    padding: 10px 22px;
-    font-size: 0.95rem;
+  body.app-page .hero-content .btn-primary {
+    display: block;        /* stack vertically */
+    width: 100%;           /* full width */
+    max-width: 180px;      /* prevent oversized button */
+    margin: 10px auto;     /* vertical gap + centered */
+    padding: 12px 0;
+    font-size: 0.9rem;
   }
 }
 
-/* Mobile */
-@media (max-width: 480px) {
-  body.app-page .hero {
-    height: 75vh;
-  }
-
+/* Extra small screens */
+@media (max-width: 400px) {
   body.app-page .hero-content h1 {
     font-size: 1.6rem;
   }
-
   body.app-page .hero-content p {
     font-size: 0.9rem;
   }
-
-  /* Fix buttons on mobile */
-  body.app-page .cta-buttons {
-    flex-direction: column;   /* stack vertically */
-    align-items: center;
-    gap: 18px;                /* proper gap between buttons */
-  }
-
-  body.app-page .cta-buttons .btn-primary,
-  body.app-page .cta-buttons .btn-secondary {
-    display: block;
-    width: 50%;
-    max-width: 280px;
-    font-size: 0.9rem;
-    margin: 0 auto;          /* center align */
+  body.app-page .hero-content .btn-primary {
+    font-size: 0.85rem;  /* smaller text for tiny screens */
+    padding: 10px 0;
   }
 }
 
